@@ -80,6 +80,7 @@ namespace team_builder
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(214, 20);
             this.textBox2.TabIndex = 5;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
@@ -142,6 +143,7 @@ namespace team_builder
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.printToolStripMenuItem.Text = "Open";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
