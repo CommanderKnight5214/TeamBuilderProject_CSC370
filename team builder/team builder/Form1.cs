@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 namespace team_builder
 {
+    /*Group Members of Pro-gaming: James, Dominic, Nick, and Tony.  
+     * 3/25/2020, 
+     * The purpose of this program is to build teams with each team having different members.
+     */
     public partial class Form1 : Form
     {
         String Name;
@@ -30,35 +34,16 @@ namespace team_builder
         {
 
         }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            //string[] lines = { "James", "Dominic ", "Nick","Tony"};
-            
-            string docPath =
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            using (StreamWriter outputFile = new
-            StreamWriter(Path.Combine(docPath, "sampleLists.txt")))
-            {
-                foreach (string line in values)
-                    outputFile.WriteLine(line);
-            }
-            MessageBox.Show("Your file has been saved in the Documents Folder", "Saved");
-
-        }
-
+        //This is the add button, the primary purpose of this button is to allow the user to add names to the rich text box. 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+
             Name = Convert.ToString(this.textBox1.Text);
-            this.richTextBox2.AppendText(Name+" ");
-            
+            this.richTextBox2.AppendText(Name + " ");
             values[count] = Name;
             count++;
 
-           this.textBox1.Text = Convert.ToString(" ");
+            this.textBox1.Text = Convert.ToString(" ");
 
 
 
@@ -69,8 +54,33 @@ namespace team_builder
 
         }
 
+        //This is the save as tool strip, the primary function of this tool strip is to allow the user to save the groups that were added to the program in a text file. 
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.ShowDialog();
+            StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
 
-        //This Menu Tab allows the user to read to a file to the place of their choosing. 
+            
+            foreach (string line in values)    // this will print names virtically
+                sw.WriteLine(line);
+            
+
+            
+           //string result = String.Concat(values);
+            //sw.WriteLine(result);                   //this will print names vnext to each other
+            
+
+            sw.Close();
+        }
+
+        //This is the help menu tool strip, the primary function of this tool strip is to explain how the application works for the user. 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Save will place a txtfile called \nsampletest in documents folder \nand will overwrite everytime you \nclick save \nSave as will let user \npick where they want to save \nthe text doc and lets them \nname it", "Help Menu");
+        }
+
+        //This is the Open menu tool strip, the primary function of this tool strip is to read in a file with a list of names on it. 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             {
@@ -97,10 +107,6 @@ namespace team_builder
                 }
             }
         }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
-}
+    }
+
