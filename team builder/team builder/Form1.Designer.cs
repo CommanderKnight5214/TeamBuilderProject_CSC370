@@ -61,11 +61,12 @@ namespace team_builder
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 128);
+            this.label2.Location = new System.Drawing.Point(12, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 13);
+            this.label2.Size = new System.Drawing.Size(70, 10);
             this.label2.TabIndex = 2;
-            this.label2.Text = "How many groups do you want";
+            this.label2.Text = "Enter Team Size.\r\n";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox1
             // 
