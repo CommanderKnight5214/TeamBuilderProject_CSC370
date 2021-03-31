@@ -73,15 +73,15 @@ namespace team_builder
             saveFileDialog1.ShowDialog();
             StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
 
-            
+
             foreach (string line in values)    // this will print names virtically
                 sw.WriteLine(line);
-            
 
-            
-           //string result = String.Concat(values);
+
+
+            //string result = String.Concat(values);
             //sw.WriteLine(result);                   //this will print names vnext to each other
-            
+
 
             sw.Close();
         }
@@ -156,49 +156,50 @@ namespace team_builder
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*
-             * int groupCount = count/numOfGroups;
-            this.richTextBox1.Clear();
+            try
+            {
+                /*
+                 * int groupCount = count/numOfGroups;
+                this.richTextBox1.Clear();
 
-            Random random = new Random();
-            int numOfGroups = Convert.ToInt32(this.textBox2.Text);
-            
-            for (int i =0; i<=count;i++)
-            {
-            int randomNumber = random.Next(numOfGroups);
-            this.richTextBox1.AppendText(randomNumber +" "+ values[i] + " " + "\n" );
-            }
-            */
-            this.richTextBox1.Clear();
-            int[] groupNumStorage = new int[100];
-            Random random = new Random();
-            int numOfGroups = Convert.ToInt32(this.textBox2.Text);
-            //int randomNumberCount = 0;
-            for (int i = 0; i <= 9  /*replace with count*/ ; i++)
-            {
+                Random random = new Random();
+                int numOfGroups = Convert.ToInt32(this.textBox2.Text);
+
+                for (int i =0; i<=count;i++)
+                {
                 int randomNumber = random.Next(numOfGroups);
-                //randomNumberCount = randomNumber;
+                this.richTextBox1.AppendText(randomNumber +" "+ values[i] + " " + "\n" );
+                }
+                */
+                this.richTextBox1.Clear();
+                int[] groupNumStorage = new int[100];
+                Random random = new Random();
+                int numOfGroups = Convert.ToInt32(this.textBox2.Text);
+                //int randomNumberCount = 0;
+                for (int i = 0; i <= 9  /*replace with count*/ ; i++)
+                {
+                    int randomNumber = random.Next(numOfGroups);
+                    //randomNumberCount = randomNumber;
 
-                //groupNumStorage
+                    //groupNumStorage
 
 
-                int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
-                this.richTextBox1.AppendText(answer + " " + testNames[i] + " " + "\n");
+                    int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
+                    this.richTextBox1.AppendText(answer + " " + testNames[i] + " ");
 
 
+                }
+            }
+            catch
+            {
+                this.label3.Text = "Invalid Name, Character, " + "\n" + "or Group Size, Check your" + "\n" + "Name and Size boxs.";
             }
 
+        }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
 
-
-
-
-            /*
-            for (int i =0;i<numOfGroups;i++)
-             {
-                 this.richTextBox1.AppendText(numOfGroups.ToString() + " ");
-             }
-            */
         }
     }
-
+}
