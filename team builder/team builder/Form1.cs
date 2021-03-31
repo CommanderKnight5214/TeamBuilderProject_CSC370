@@ -16,9 +16,12 @@ namespace team_builder
      */
     public partial class Form1 : Form
     {
-        String Name;
+        // global variables the array values holds all the names in a big array 
+        // String Name;
         int count = 0;
         string[] values = new string[400];
+        string[] testNames = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
+        int undoCounter = 0;
 
         public Form1()
         {
@@ -32,7 +35,16 @@ namespace team_builder
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i != values.Length; i++)
+            {
+                values[i] = " ";
+                //this.richTextBox1.AppendText(i + " ");
+            }
+            this.richTextBox1.Clear();
+            this.textBox1.Clear();
+            this.textBox2.Clear();
+            this.richTextBox2.Clear();
+            count = 0;
         }
         //This is the add button, the primary purpose of this button is to allow the user to add names to the rich text box. 
         private void button1_Click(object sender, EventArgs e)
@@ -112,6 +124,81 @@ namespace team_builder
         {
 
         }
-    }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //   int undoLocation = values.Length - 1;
+            // values[undoLocation] = " ";
+            this.richTextBox2.Clear();
+            //int undoCounter = 0;
+            while (undoCounter != count - 1)
+            {
+                this.richTextBox2.AppendText(values[undoCounter] + " ");
+                undoCounter++;
+                values[count - 1] = " ";
+            }
+            int undoPlaceHolder = undoCounter;
+            undoCounter = 0;
+            count--;
+            /*
+            // Shifting elements
+            for (int i = undoPlaceHolder - 1; i < undoCounter; i++)
+            {
+                values[i] = values[i =1] ;
+                
+            }
+            */
+            //values[undoCounter] = " ";
+            //undoCounter = 0;
+            //count--;
+            // this.richTextBox2.AppendText(values.ToString());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            /*
+             * int groupCount = count/numOfGroups;
+            this.richTextBox1.Clear();
+
+            Random random = new Random();
+            int numOfGroups = Convert.ToInt32(this.textBox2.Text);
+            
+            for (int i =0; i<=count;i++)
+            {
+            int randomNumber = random.Next(numOfGroups);
+            this.richTextBox1.AppendText(randomNumber +" "+ values[i] + " " + "\n" );
+            }
+            */
+            this.richTextBox1.Clear();
+            int[] groupNumStorage = new int[100];
+            Random random = new Random();
+            int numOfGroups = Convert.ToInt32(this.textBox2.Text);
+            //int randomNumberCount = 0;
+            for (int i = 0; i <= 9  /*replace with count*/ ; i++)
+            {
+                int randomNumber = random.Next(numOfGroups);
+                //randomNumberCount = randomNumber;
+
+                //groupNumStorage
+
+
+                int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
+                this.richTextBox1.AppendText(answer + " " + testNames[i] + " " + "\n");
+
+
+            }
+
+
+
+
+
+
+            /*
+            for (int i =0;i<numOfGroups;i++)
+             {
+                 this.richTextBox1.AppendText(numOfGroups.ToString() + " ");
+             }
+            */
+        }
     }
 
