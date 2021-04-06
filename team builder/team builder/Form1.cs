@@ -21,6 +21,7 @@ namespace team_builder
         int count = 0;
         string[] values = new string[400];
         string[] testNames = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
+        string[] Names = { };
         int undoCounter = 0;
 
         public Form1()
@@ -54,6 +55,13 @@ namespace team_builder
             this.richTextBox2.AppendText(Name + " ");
             values[count] = Name;
             count++;
+            for (int i = 0; i <= Names.Length; i++)
+            {
+                if(i == Names.Length-1)
+                {
+                    Names[i] = Name;
+                }
+            }
 
             this.textBox1.Text = Convert.ToString(" ");
 
@@ -131,15 +139,32 @@ namespace team_builder
             // values[undoLocation] = " ";
             this.richTextBox2.Clear();
             //int undoCounter = 0;
-            while (undoCounter != count - 1)
+            if (count == 0)
             {
-                this.richTextBox2.AppendText(values[undoCounter] + " ");
-                undoCounter++;
-                values[count - 1] = " ";
+                this.label3.Text = "There are no more names" + "\n" + "in the text box.";
             }
-            int undoPlaceHolder = undoCounter;
-            undoCounter = 0;
-            count--;
+            else
+            {
+
+
+                while (undoCounter != count - 1)
+                {
+                    this.richTextBox2.AppendText(values[undoCounter] + " ");
+                    undoCounter++;
+                    if (count == 1)
+                    {
+                        values[0] = "";
+                    }
+                    if (count > 1)
+                    {
+                        values[count - 1] = "";
+                    }
+                }
+                int undoPlaceHolder = undoCounter;
+                undoCounter = 0;
+                count--;
+            }
+
             /*
             // Shifting elements
             for (int i = undoPlaceHolder - 1; i < undoCounter; i++)
@@ -176,7 +201,7 @@ namespace team_builder
                 Random random = new Random();
                 int numOfGroups = Convert.ToInt32(this.textBox2.Text);
                 //int randomNumberCount = 0;
-                for (int i = 0; i <= 9  /*replace with count*/ ; i++)
+                for (int i = 0; i <= count; i++)
                 {
                     int randomNumber = random.Next(numOfGroups);
                     //randomNumberCount = randomNumber;
@@ -185,7 +210,7 @@ namespace team_builder
 
 
                     int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
-                    this.richTextBox1.AppendText(answer + " " + testNames[i] + " ");
+                    this.richTextBox1.AppendText(answer + " " + Names[i] + " ");
 
 
                 }
@@ -198,6 +223,11 @@ namespace team_builder
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
         {
 
         }

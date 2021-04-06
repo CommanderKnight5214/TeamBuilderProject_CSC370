@@ -187,12 +187,13 @@ namespace team_builder
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(265, 177);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(69, 39);
             this.button5.TabIndex = 13;
             this.button5.Text = "Undo Group";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label3
             // 
