@@ -45,7 +45,6 @@ namespace team_builder
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -108,7 +107,7 @@ namespace team_builder
             // 
             this.button3.Location = new System.Drawing.Point(189, 177);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(71, 37);
+            this.button3.Size = new System.Drawing.Size(82, 37);
             this.button3.TabIndex = 8;
             this.button3.Text = "Create Group";
             this.button3.UseVisualStyleBackColor = true;
@@ -116,9 +115,9 @@ namespace team_builder
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(339, 179);
+            this.button4.Location = new System.Drawing.Point(324, 179);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 37);
+            this.button4.Size = new System.Drawing.Size(82, 37);
             this.button4.TabIndex = 9;
             this.button4.Text = "Clear";
             this.button4.UseVisualStyleBackColor = true;
@@ -184,17 +183,6 @@ namespace team_builder
             this.richTextBox2.Text = "";
             this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(265, 177);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(69, 39);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "Undo Group";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -214,7 +202,6 @@ namespace team_builder
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 450);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button4);
@@ -252,7 +239,6 @@ namespace team_builder
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
     }
 }

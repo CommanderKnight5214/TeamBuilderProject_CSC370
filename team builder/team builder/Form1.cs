@@ -21,7 +21,6 @@ namespace team_builder
         int count = 0;
         string[] values = new string[400];
         string[] testNames = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
-        string[] Names = { };
         int undoCounter = 0;
 
         public Form1()
@@ -50,23 +49,12 @@ namespace team_builder
         //This is the add button, the primary purpose of this button is to allow the user to add names to the rich text box. 
         private void button1_Click(object sender, EventArgs e)
         {
-
             Name = Convert.ToString(this.textBox1.Text);
             this.richTextBox2.AppendText(Name + " ");
             values[count] = Name;
             count++;
-            for (int i = 0; i <= Names.Length; i++)
-            {
-                if(i == Names.Length-1)
-                {
-                    Names[i] = Name;
-                }
-            }
 
             this.textBox1.Text = Convert.ToString(" ");
-
-
-
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
@@ -210,7 +198,7 @@ namespace team_builder
 
 
                     int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
-                    this.richTextBox1.AppendText(answer + " " + Names[i] + " ");
+                    this.richTextBox1.AppendText(answer + " " + values[i] + " ");
 
 
                 }
@@ -223,11 +211,6 @@ namespace team_builder
         }
 
         private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
         {
 
         }
