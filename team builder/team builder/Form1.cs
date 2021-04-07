@@ -189,17 +189,27 @@ namespace team_builder
                 Random random = new Random();
                 int numOfGroups = Convert.ToInt32(this.textBox2.Text);
                 //int randomNumberCount = 0;
-                for (int i = 0; i <= count; i++)
+                for (int i = 0; i <= count-1; i++)
                 {
                     int randomNumber = random.Next(numOfGroups);
                     //randomNumberCount = randomNumber;
 
                     //groupNumStorage
-
+                    
+                    /*
+                    if(count < values.Length)
+                    {
+                        this.label3.Text = "Your group size is smaller than your name box.";
+                    }
+                    else
+                    {
+                        int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
+                        this.richTextBox1.AppendText(answer + " " + values[i] + " ");
+                    }
+                    */
 
                     int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
                     this.richTextBox1.AppendText(answer + " " + values[i] + " ");
-
 
                 }
             }
