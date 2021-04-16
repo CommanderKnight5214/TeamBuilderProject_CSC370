@@ -10,8 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 namespace team_builder
 {
-    /*Group Members of Pro-gaming: James, Dominic, Nick, and Tony.  
-     * 3/25/2020, 
+    /*Group Members of Pro-gaming: James Schwantes, Dominic Simon, Nickolas Spreitzer, and Tony Mastrocola.  
+     * 4/9/2021, 
      * The purpose of this program is to build teams with each team having different members.
      */
     public partial class Form1 : Form
@@ -85,7 +85,10 @@ namespace team_builder
         //This is the help menu tool strip, the primary function of this tool strip is to explain how the application works for the user. 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Save will place a txtfile called \nsampletest in documents folder \nand will overwrite everytime you \nclick save \nSave as will let user \npick where they want to save \nthe text doc and lets them \nname it", "Help Menu");
+            MessageBox.Show("Click the top text box to enter a name \n Press 'Add' after each single name is entered \n'Undo Name' will delete the last name entered " +
+                 "\n \n Use the bottom text box to enter the size of your team \n 'Create Group' will be used to create your group solutions \n (use when names and size are fullfilled)" +
+                 "\n \n 'Clear' will reset ALL areas of the application \n \n The two boxes at the bottom are for Name and Group output \n \n" +
+                 "The 'Open' button is used to select any document of choice \nThe 'Save As' button is used to save to a document", "Quick Start Guide");
         }
 
         //This is the Open menu tool strip, the primary function of this tool strip is to read in a file with a list of names on it. 
