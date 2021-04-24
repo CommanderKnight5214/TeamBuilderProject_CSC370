@@ -21,7 +21,13 @@ namespace team_builder
         int count = 0;
         string[] values = new string[400];
         string[] testNames = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
+        string[] testGroup = { "aaron abe abe", "abel abdul abdul" };
+        string[] splitted = new string[400];
+        string[] randomNumbers = new string[400];
+        string[] saveArray = new string[400];
         int undoCounter = 0;
+        int indexSearch = 0;
+        int temp = 0;
 
         public Form1()
         {
@@ -87,8 +93,9 @@ namespace team_builder
         {
             MessageBox.Show("Click the top text box to enter a name \n Press 'Add' after each single name is entered \n'Undo Name' will delete the last name entered " +
                  "\n \n Use the bottom text box to enter the size of your team \n 'Create Group' will be used to create your group solutions \n (use when names and size are fullfilled)" +
-                 "\n \n 'Clear' will reset ALL areas of the application \n \n The two boxes at the bottom are for Name and Group output \n \n" +
-                 "The 'Open' button is used to select any document of choice \nThe 'Save As' button is used to save to a document", "Quick Start Guide");
+                 "\n \n 'Clear' will reset ALL areas of the application \n \n The two boxes at the bottom are for Name and Group output. \n \n" +
+                 "The 'Open' button is used to select any document of choice.\n\nMake sure that the text file your opening has this format. \n" +
+                 "Example: FirstName_LastName FirstName2_LastName2 \n \nThe 'Save As' button is used to save to a document", "Quick Start Guide");
         }
 
         //This is the Open menu tool strip, the primary function of this tool strip is to read in a file with a list of names on it. 
@@ -111,8 +118,21 @@ namespace team_builder
                         var fileStream = openFileDialog.OpenFile();
                         using (StreamReader reader = new StreamReader(fileStream))
                         {
+                            //splitted = testGroup[indexSearch].Split(' ');
                             fileContent = reader.ReadToEnd();
-                            this.textBox1.Text = fileContent;
+                            string[] splitFile = fileContent.Split(' ');
+
+                            //splitFile = fileContent.Split(' ');
+                            for (int i = 0; i < splitFile.Length; i++)
+                            {
+                                int counter = 0;
+                                counter++;
+
+                                values[i] = splitFile[i];
+                            }
+                            this.richTextBox2.Text = fileContent;
+                            //string testing = String.Concat(splitFile);
+                            //this.richTextBox1.Text = testing;
                         }
                     }
                 }
@@ -172,60 +192,139 @@ namespace team_builder
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // switch so you divide people by groups and test groups for the random nbumber
+            // This is the create group button the code for checking for duplicate names is underway and on a good track but not finished
+            // Takes random function and gives a name a random number and displays it in textbox1 "group" textbox
+            //
+            //
+            //
+            //
+
             try
             {
-                /*
-                 * int groupCount = count/numOfGroups;
                 this.richTextBox1.Clear();
-
+                string[] groupNumStorage = new string[100];
                 Random random = new Random();
                 int numOfGroups = Convert.ToInt32(this.textBox2.Text);
-
-                for (int i =0; i<=count;i++)
-                {
-                int randomNumber = random.Next(numOfGroups);
-                this.richTextBox1.AppendText(randomNumber +" "+ values[i] + " " + "\n" );
-                }
-                */
-                this.richTextBox1.Clear();
-                int[] groupNumStorage = new int[100];
-                Random random = new Random();
-                int numOfGroups = Convert.ToInt32(this.textBox2.Text);
+                //int randomNumber =   testNames.Length/numOfGroups;
                 //int randomNumberCount = 0;
-                for (int i = 0; i <= count-1; i++)
+                //int checkAnswer = 0;
+                for (int i = 0; i <= count - 1; i++)
                 {
                     int randomNumber = random.Next(numOfGroups);
                     //randomNumberCount = randomNumber;
 
                     //groupNumStorage
-                    
-                    /*
-                    if(count < values.Length)
+                    // makes it so it displays groups starting at 1 and not 0
+                    int answer = randomNumber + 1;
+
+
+                    if (values[i] == null)
                     {
-                        this.label3.Text = "Your group size is smaller than your name box.";
+                        continue;
                     }
                     else
-                    {
-                        int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
-                        this.richTextBox1.AppendText(answer + " " + values[i] + " ");
+                    {   // sets each index of randomNumbers to annswer so it can print off the groups when writing to file
+                        randomNumbers[i] = answer.ToString();
+                        this.richTextBox1.AppendText(answer + " " + values[i] + " " + "\n");
+                        //this.richTextBox2.AppendText(randomNumbers[i]);
+
                     }
-                    */
-
-                    int answer = randomNumber + 1; // makes it so it displays groups starting at 1 and not 0
-                    this.richTextBox1.AppendText(answer + " " + values[i] + " ");
-
                 }
             }
             catch
             {
-                this.label3.Text = "Invalid Name, Character, " + "\n" + "or Group Size, Check your" + "\n" + "Name and Size boxs.";
+                MessageBox.Show("Invalid Name, Character, " + "\n" + "or Group Size, Check your" + "\n" + "Name and Size boxs.");
             }
+
+            //
+            // below is the code for adding names to each persons array index so the duplicate checker can look for duplicated names does not curretly work correct
+            // so it is not implemeted
+            // below that starting at line 263 
+            // is the code for checking for duplicates in groups it works but a count variable is making the array index go out of bounds
+            // so it works but errors out 
+            // 
+
+            /*for (int index = 0; index<testNames.Length;index++)
+            {
+                if (randomNumber==index)
+                {
+                    groupNumStorage[answer] = testNames[i];
+                }
+            }*/
+
+
+            //Name = Convert.ToString(this.richTextBox1.Text);
+
+
+            //string output = String.Join(" ",groupNumStorage);
+            //this.richTextBox2.AppendText(output);
+
+
+            /*
+            // grou checker 
+
+            
+            for (int i = 0; i <= testGroup.Length; i++)
+            {
+
+                do
+                {
+                    string result = String.Concat(splitted);
+                    
+                    splitted = testGroup[indexSearch].Split(' ');
+                    //this.richTextBox2.AppendText(testGroup[indexSearch]);
+                    //this.richTextBox2.AppendText(result + " ");
+
+                    if (temp < splitted.Length)
+                    {
+                        if (splitted[indexSearch] != splitted[temp])
+                        {
+                            //for (int f = 0; f<=splitted.Length  ;f++)
+                            //{
+                            this.richTextBox1.AppendText(splitted[indexSearch] + " ");
+
+                            //}
+
+                        }
+                        else
+                        {
+                            this.richTextBox1.AppendText(splitted[indexSearch] + " ");
+                            this.richTextBox1.AppendText("Duplicate found ");
+
+                        }
+                        temp++;
+                        indexSearch++;
+                    }
+
+                } while (indexSearch < testGroup[i].Length );
+                for (int a = 0; a< splitted.Length;a++)
+                {
+                    splitted[a] = "";
+                }
+                indexSearch = 0;
+                temp = 0;
+            }
+            
+            */
+            /*
+            for (int i =0;i<numOfGroups;i++)
+             {
+                 this.richTextBox1.AppendText(numOfGroups.ToString() + " ");
+             }
+            */
 
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.ActiveControl = textBox1;
+            textBox1.Focus();
         }
     }
 }
