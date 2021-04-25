@@ -99,7 +99,12 @@ namespace team_builder
                 saveArray[i] = randomNumbers[i] + " " + values[i];
             }
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.DefaultExt = "txt";
+            saveFileDialog1.FileName = "Document"; // Default file name
+            saveFileDialog1.DefaultExt = ".txt"; // Default file extension
+            saveFileDialog1.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
             saveFileDialog1.ShowDialog();
+            
             StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
 
 

@@ -37,3 +37,4 @@ D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Deb
 D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.csproj.CoreCompileInputs.cache
 D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.exe
 D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.pdb
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.csprojAssemblyReference.cache
