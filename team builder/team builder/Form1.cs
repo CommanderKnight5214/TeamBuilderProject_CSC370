@@ -29,9 +29,15 @@ namespace team_builder
         string[] checkArray = new string[400];
         string[] groupNumStorage = new string[100];
         string[] displayArray = { };
+        string[] teamString = new string[400];
+        string tempStringDisplay = "";
+        int beginningLine = 0;
+        int teamCount = 0;
         int undoCounter = 0;
         int runTimeCount = 0;
 
+        string generalPurposeErrorMessage = "Invalid Name, Character, " + "\n" + "or Group Size, Check your" + "\n" + "Name and Size boxs.";
+        string WarningLabel = "Warning!";
         //this is all the arrays i use for testig
         string[] outputarray = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
         string[] testNames = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
@@ -62,7 +68,9 @@ namespace team_builder
             this.richTextBox1.Clear();
             this.textBox1.Clear();
             this.textBox2.Clear();
+            this.textBox3.Clear();
             this.richTextBox2.Clear();
+            teamCount = 0;
             count = 0;
             textBox1.Focus();
         }
@@ -95,7 +103,7 @@ namespace team_builder
             StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
 
 
-            foreach (string line in values)    // this will print names virtically
+            foreach (string line in teamString)    // this will print names virtically
                 sw.WriteLine(line);
 
 
@@ -175,7 +183,7 @@ namespace team_builder
             //int undoCounter = 0;
             if (count == 0)
             {
-                MessageBox.Show("There are no more names" + "\n" + "in the text box.");
+                MessageBox.Show("There are no more names" + "\n" + "in the text box.", "No Names");
             }
             else
             {
@@ -230,70 +238,98 @@ namespace team_builder
             //{
 
             //}
-            int numberOfNamesInEachGroup = Convert.ToInt32(this.textBox3.Text);
-            int numOfGroups = Convert.ToInt32(this.textBox2.Text);
-            try
+            beginningLine = 0;
+            teamCount = 0;
+            string numberOfNamesString = Convert.ToString(this.textBox3.Text);
+            string numberOfGroupsString = Convert.ToString(this.textBox2.Text);
+            int numberOfNamesInEachGroup = 0;
+            int numOfGroups = 0;
+            if(numberOfNamesString == "")
             {
-
-                this.richTextBox1.Clear();
-                Random random = new Random();//change to count
-                for (int i = 0; i <= testNames.Length; i++)
+                MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
+            }
+            else if(numberOfGroupsString == "")
+            {
+                MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
+            }
+            else
+            {
+                numberOfNamesInEachGroup = Convert.ToInt32(numberOfNamesString);
+                numOfGroups = Convert.ToInt32(numberOfGroupsString);
+                try
                 {
-                    int randomNumber = random.Next(numOfGroups);
-
-                    //makes it so it displays groups starting at 1 and not 0
-                    int answer = randomNumber + 1;
-
-
-                    if (values[i] == null)
+                    this.richTextBox1.Clear();
+                    Random random = new Random();//change to count
+                    for (int i = 0; i <= testNames.Length; i++)
                     {
-                        continue;
-                    }
+                        int randomNumber = random.Next(numOfGroups);
 
-                    else
-                    {
-                        count++;
-                        // sets each index of randomNumbers to annswer so it can print off the groups when writing to file
-                        randomNumbers[i] = answer.ToString();
-                        //this.richTextBox1.AppendText(answer + " " + values[i] + " " + "\n");
-                        /*
-                        groupNumStorage[randomNumber] += (" "+testNames[i]  );
-                        if(randomNumber==0)
+                        //makes it so it displays groups starting at 1 and not 0
+                        int answer = randomNumber + 1;
+
+
+                        if (values[i] == null)
                         {
-                        MessageBox.Show(String.Concat(groupNumStorage[0]));
-                        }*/
-                        for (int addingNames = 0; addingNames < count; addingNames++) //adds names to a group this is where code changed from displayig names to displaying groups.
-                        {
-                            if (randomNumber == addingNames)
-                            {
-                                groupNumStorage[randomNumber] += (" " + values[i]);
-                            }
+                            continue;
                         }
-                        this.richTextBox2.AppendText(answer + " " + values[i] + " " + "\n");
-                        //this.richTextBox2.AppendText(randomNumbers[i]);
 
-                        //}
-                        //for(int addingToGroupStorage= 0; addingToGroupStorage<)
+                        else
+                        {
+                            count++;
+                            // sets each index of randomNumbers to annswer so it can print off the groups when writing to file
+                            randomNumbers[i] = answer.ToString();
+                            //this.richTextBox1.AppendText(answer + " " + values[i] + " " + "\n");
+                            /*
+                            groupNumStorage[randomNumber] += (" "+testNames[i]  );
+                            if(randomNumber==0)
+                            {
+                            MessageBox.Show(String.Concat(groupNumStorage[0]));
+                            }*/
+                            for (int addingNames = 0; addingNames < count; addingNames++) //adds names to a group this is where code changed from displayig names to displaying groups.
+                            {
+                                if (randomNumber == addingNames)
+                                {
+                                    groupNumStorage[randomNumber] += (" " + values[i]);
+                                }
+                            }
+                            //this.richTextBox2.AppendText(answer + " " + values[i] + " " + "\n");
+                            //this.richTextBox2.AppendText(randomNumbers[i]);
+
+                            //}
+                            //for(int addingToGroupStorage= 0; addingToGroupStorage<)
+                        }
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Invalid Name, Character, " + "\n" + "or Group Size, Check your" + "\n" + "Name and Size boxs.");
-            }
+                catch
+                {
+                    MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
+                }
 
-            for (int displayIndex = 0; displayIndex < numOfGroups; displayIndex++) //this displays the groups in a pretty way
-            {
-                int saveDisplayIndex = displayIndex + 1;                                //groupnumstorage
-                this.richTextBox1.AppendText("\nteam: " + saveDisplayIndex.ToString() + groupNumStorage[displayIndex]);
-            }
-            for (int clearig = 0; clearig < groupNumStorage.Length; clearig++)
-            {
-                groupNumStorage[clearig] = "";
-            }
-            runTimeCount++;
+                for (int displayIndex = 0; displayIndex < numOfGroups; displayIndex++) //this displays the groups in a pretty way
+                {
+                    int saveDisplayIndex = displayIndex + 1; //groupnumstorage
+                    if (beginningLine == 0)
+                    {
+                        tempStringDisplay = "Team " + saveDisplayIndex.ToString() + ": " + groupNumStorage[displayIndex];
+                        beginningLine++;
+                    }
+                    if (beginningLine != 0)
+                    {
+                        tempStringDisplay = "\nTeam " + saveDisplayIndex.ToString() + ": " + groupNumStorage[displayIndex];
+                    }
+                    teamString[teamCount] = tempStringDisplay;
+                    teamCount++;
+                    this.richTextBox1.AppendText(tempStringDisplay);
+                }
+                for (int clearig = 0; clearig < groupNumStorage.Length; clearig++)
+                {
+                    groupNumStorage[clearig] = "";
+                }
+                runTimeCount++;
 
-            textBox1.Focus();
+                textBox1.Focus();
+            }
+            
 
         }//this makes the array so it can be checked for duplicates it works but not impletmeted
         public void groupCheckArrayCreator(string[] array)
