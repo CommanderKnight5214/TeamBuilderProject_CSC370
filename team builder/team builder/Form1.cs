@@ -230,6 +230,7 @@ namespace team_builder
             //{
 
             //}
+            int numberOfNamesInEachGroup = Convert.ToInt32(this.textBox3.Text);
             int numOfGroups = Convert.ToInt32(this.textBox2.Text);
             try
             {
@@ -398,6 +399,16 @@ namespace team_builder
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
