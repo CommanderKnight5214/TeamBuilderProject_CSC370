@@ -20,7 +20,7 @@ namespace team_builder
     */
     public partial class Form1 : Form
     {// global variables the array values holds all the names in a big array 
-     // String Name;
+        //string Name;
         int count = 0;
         string[] values = new string[400];
         string[] splitted = { };
@@ -36,7 +36,8 @@ namespace team_builder
         int undoCounter = 0;
         int runTimeCount = 0;
 
-        string generalPurposeErrorMessage = "Invalid Name, Character, " + "\n" + "or Group Size, Check your" + "\n" + "Name and Size boxs.";
+        string generalPurposeErrorMessage = "Invalid Name, Character, " + "\n" + "or Team Size. Check your" + "\n" + "Name and Size boxs.";
+        string ErrorMessageForTeamSize = "You need to have a Name, and a Team Size \nin order to create a group.";
         string WarningLabel = "Warning!";
         //this is all the arrays i use for testig
         string[] outputarray = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
@@ -67,7 +68,6 @@ namespace team_builder
             }
             this.richTextBox1.Clear();
             this.textBox1.Clear();
-            this.textBox2.Clear();
             this.textBox3.Clear();
             this.richTextBox2.Clear();
             teamCount = 0;
@@ -78,11 +78,19 @@ namespace team_builder
         private void button1_Click(object sender, EventArgs e)
         {
             Name = Convert.ToString(this.textBox1.Text);
-            this.richTextBox2.AppendText(Name + " ");
-            values[count] = Name;
-            count++;
-
-            this.textBox1.Text = Convert.ToString(" ");
+            if(Name == "" || Name == " ")
+            {
+                MessageBox.Show("You must enter a name into a \nthe Name Text Box before adding.", "No Name");
+            }
+            else
+            {
+                this.richTextBox2.AppendText(Name + " ");
+                values[count] = Name;
+                count++;
+                this.textBox1.Text = Convert.ToString(" ");
+                
+            }
+            
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
@@ -142,7 +150,7 @@ namespace team_builder
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.InitialDirectory = "c:\\";
-                    openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    openFileDialog.Filter = "Text documents (.txt)|*.txt";
                     openFileDialog.FilterIndex = 2;
                     openFileDialog.RestoreDirectory = true;
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -188,7 +196,7 @@ namespace team_builder
             //int undoCounter = 0;
             if (count == 0)
             {
-                MessageBox.Show("There are no more names" + "\n" + "in the text box.", "No Names");
+                MessageBox.Show("There are no more names" + "\n" + "in the Name Display box.", "No Names");
             }
             else
             {
@@ -243,26 +251,27 @@ namespace team_builder
             //{
 
             //}
-            beginningLine = 0;
-            teamCount = 0;
-            string numberOfNamesString = Convert.ToString(this.textBox3.Text);
-            string numberOfGroupsString = Convert.ToString(this.textBox2.Text);
-            int numberOfNamesInEachGroup = 0;
             int numOfGroups = 0;
-            if(numberOfNamesString == "")
+            if (teamCount != 0)
             {
-                MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
+                for(int i = 0; i < teamString.Length; i++)
+                {
+                    if(teamString[i] != "")
+                    {
+                        teamString[i] = "";
+                    }
+                }
+                teamCount = 0;
             }
-            else if(numberOfGroupsString == "")
+            else if(this.textBox3.Text == "")
             {
-                MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
+                MessageBox.Show(ErrorMessageForTeamSize, WarningLabel);
             }
             else
             {
-                numberOfNamesInEachGroup = Convert.ToInt32(numberOfNamesString);
-                numOfGroups = Convert.ToInt32(numberOfGroupsString);
                 try
                 {
+                    numOfGroups = Convert.ToInt32(this.textBox3.Text);
                     this.richTextBox1.Clear();
                     Random random = new Random();//change to count
                     for (int i = 0; i <= testNames.Length; i++)
@@ -309,32 +318,25 @@ namespace team_builder
                 {
                     MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
                 }
-
-                for (int displayIndex = 0; displayIndex < numOfGroups; displayIndex++) //this displays the groups in a pretty way
-                {
-                    int saveDisplayIndex = displayIndex + 1; //groupnumstorage
-                    if (beginningLine == 0)
-                    {
-                        tempStringDisplay = "Team " + saveDisplayIndex.ToString() + ": " + groupNumStorage[displayIndex];
-                        beginningLine++;
-                    }
-                    if (beginningLine != 0)
-                    {
-                        tempStringDisplay = "\nTeam " + saveDisplayIndex.ToString() + ": " + groupNumStorage[displayIndex];
-                    }
-                    teamString[teamCount] = tempStringDisplay;
-                    teamCount++;
-                    this.richTextBox1.AppendText(tempStringDisplay);
-                }
-                for (int clearig = 0; clearig < groupNumStorage.Length; clearig++)
-                {
-                    groupNumStorage[clearig] = "";
-                }
-                runTimeCount++;
-
-                textBox1.Focus();
             }
-            
+           
+
+            for (int displayIndex = 0; displayIndex < numOfGroups; displayIndex++) //this displays the groups in a pretty way
+            {
+                int saveDisplayIndex = displayIndex + 1;                                //groupnumstorage
+                tempStringDisplay = "\nteam: " + saveDisplayIndex.ToString() + groupNumStorage[displayIndex];
+                
+                teamString[teamCount] = tempStringDisplay;
+                this.richTextBox1.AppendText(tempStringDisplay);
+                teamCount++;
+            }
+            for (int clearig = 0; clearig < groupNumStorage.Length; clearig++)
+            {
+                groupNumStorage[clearig] = "";
+            }
+            runTimeCount++;
+
+            textBox1.Focus();
 
         }//this makes the array so it can be checked for duplicates it works but not impletmeted
         public void groupCheckArrayCreator(string[] array)

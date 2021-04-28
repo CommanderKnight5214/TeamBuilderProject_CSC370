@@ -31,9 +31,7 @@ namespace team_builder
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -61,16 +59,6 @@ namespace team_builder
             this.label1.Text = "Enter names:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 162);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Enter Number of Teams:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(189, 32);
@@ -78,14 +66,6 @@ namespace team_builder
             this.textBox1.Size = new System.Drawing.Size(218, 20);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(188, 159);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
@@ -109,7 +89,7 @@ namespace team_builder
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(189, 195);
+            this.button3.Location = new System.Drawing.Point(189, 162);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(82, 37);
             this.button3.TabIndex = 8;
@@ -119,7 +99,7 @@ namespace team_builder
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(324, 195);
+            this.button4.Location = new System.Drawing.Point(324, 162);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(82, 37);
             this.button4.TabIndex = 9;
@@ -170,7 +150,7 @@ namespace team_builder
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 366);
+            this.richTextBox1.Location = new System.Drawing.Point(12, 320);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(560, 79);
@@ -179,7 +159,7 @@ namespace team_builder
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(12, 266);
+            this.richTextBox2.Location = new System.Drawing.Point(12, 226);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(560, 79);
@@ -203,9 +183,9 @@ namespace team_builder
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 127);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 13);
+            this.label4.Size = new System.Drawing.Size(97, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Enter Team Size:";
+            this.label4.Text = "Enter a Team Size:";
             // 
             // textBox3
             // 
@@ -220,7 +200,7 @@ namespace team_builder
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 457);
+            this.ClientSize = new System.Drawing.Size(584, 408);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -230,9 +210,7 @@ namespace team_builder
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -248,9 +226,7 @@ namespace team_builder
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
