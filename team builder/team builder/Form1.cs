@@ -20,7 +20,8 @@ namespace team_builder
     */
     public partial class Form1 : Form
     {// global variables the array values holds all the names in a big array 
-        //string Name;
+     //string Name;
+        string[] arr = { };
         int count = 0;
         string[] values = new string[400];
         string[] splitted = { };
@@ -35,6 +36,7 @@ namespace team_builder
         int teamCount = 0;
         int undoCounter = 0;
         int runTimeCount = 0;
+        int numOfGroupsCount = 0;
 
         string generalPurposeErrorMessage = "Invalid Name, Character, " + "\n" + "or Team Size. Check your" + "\n" + "Name and Size boxs.";
         string ErrorMessageForTeamSize = "You need to have a Name, and a Team Size \nin order to create a group.";
@@ -236,39 +238,51 @@ namespace team_builder
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //groupChecker(testGroup2, testGroup5);
+
+
+            groupCreator(values);
+            richTextBox2.AppendText("\n");
+            //groupCheckArrayCreator(groupNumStorage);
+            //duplicateRemover(outputarray);
+            /*
+             groupCreator(testNames);
+
+
+             if(runTimeCount>1)
+             {
+                 MessageBox.Show("yeet");
+             }
+            */
+            //groupCheckArrayCreator(testGroup3);
+
+
             //groupChecker(testGroup);
             //replace values with numgroupstorage for testing
             //groupCheckArrayCreator(testGroup);
             // switch so you divide people by groups and test groups for the random nbumber
             // This is the create group button the code for checking for duplicate names is underway and on a good track but not finished
             // Takes random function and gives a name a random number and displays it in textbox1 "group" textbox
-
-            //if (runTimeCount>0)
-            //{
-            //groupChecker(testGroup2);
-            //}
-            //else 
-            //{
-
-            //}
+            //int numOfGroups = Convert.ToInt32(this.textBox2.Text);
+            runTimeCount++;
             int numOfGroups = 0;
             if (teamCount != 0)
             {
-                for(int i = 0; i < teamString.Length; i++)
+                for (int i = 0; i < teamString.Length; i++)
                 {
-                    if(teamString[i] != "")
+                    if (teamString[i] != "")
                     {
                         teamString[i] = "";
                     }
                 }
                 teamCount = 0;
             }
-            else if(this.textBox3.Text == "")
+            else if (this.textBox3.Text == "")
             {
                 MessageBox.Show(ErrorMessageForTeamSize, WarningLabel);
             }
-            else
-            {
+
+            
                 try
                 {
                     numOfGroups = Convert.ToInt32(this.textBox3.Text);
@@ -318,14 +332,12 @@ namespace team_builder
                 {
                     MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
                 }
-            }
-           
 
             for (int displayIndex = 0; displayIndex < numOfGroups; displayIndex++) //this displays the groups in a pretty way
             {
                 int saveDisplayIndex = displayIndex + 1;                                //groupnumstorage
                 tempStringDisplay = "\nteam: " + saveDisplayIndex.ToString() + groupNumStorage[displayIndex];
-                
+
                 teamString[teamCount] = tempStringDisplay;
                 this.richTextBox1.AppendText(tempStringDisplay);
                 teamCount++;
@@ -339,25 +351,131 @@ namespace team_builder
             textBox1.Focus();
 
         }//this makes the array so it can be checked for duplicates it works but not impletmeted
+        public void groupCreator(string[] Names)
+        {
+            double sizeOfGroups = Convert.ToDouble(this.textBox3.Text);
+            double product = Names.Length / sizeOfGroups;
+            double numOfGroup = Math.Ceiling(product);
+            //MessageBox.Show(numOfGroup.ToString());    
+            int sizeOfGroup = (int)numOfGroup;
+            int numOfGroups = (int)sizeOfGroups;
+            numOfGroupsCount = numOfGroups;
+            //MessageBox.Show(numOfGroups.ToString());
+            int[] groupNumStorageSize = new int[400];
+            try
+            {
+                //int sizeOfGroups = testNames.Length %numOfGroups ;
+                //this.richTextBox1.Clear();
+                Random random = new Random();//change to count
+                for (int i = 0; i <= count; i++)
+                {
+                    int randomNumber = random.Next(numOfGroups);
+                    int randomNumber2 = random.Next(numOfGroups);
+                    int randomNumber3 = random.Next(numOfGroups);
+                    int randomNumber4 = random.Next(numOfGroups);
+                    //makes it so it displays groups starting at 1 and not 0
+                    int answer = randomNumber + 1;
+
+
+                    if (Names[i] == null)
+                    {
+                        continue;
+                    }
+
+                    else
+                    {
+                        count++;
+                        // sets each index of randomNumbers to annswer so it can print off the groups when writing to file
+                        randomNumbers[i] = answer.ToString();
+
+                        for (int addingNames = 0; addingNames < count; addingNames++) //adds names to a group this is where code changed from displayig names to displaying groups.
+                        {
+
+                            if (randomNumber == addingNames)
+                            {
+                                if (groupNumStorageSize[randomNumber] < sizeOfGroup) // this line will make all groups even example 20 names 4 groups 5 names per group every group will get 5 names
+                                {
+
+                                    //groupNumStorage[randomNumber] += (" " + Names[i]);
+                                    // groupNumStorageSize[randomNumber]++;
+
+
+                                    // the if statements below will try to create as equal groups as they can 
+
+                                    if (groupNumStorageSize[randomNumber] < groupNumStorageSize[randomNumber2])
+                                    {
+                                        groupNumStorage[randomNumber] += (" " + Names[i]);
+                                        groupNumStorageSize[randomNumber]++;
+                                    }
+                                    else if (groupNumStorageSize[randomNumber2] < groupNumStorageSize[randomNumber3])
+                                    {
+
+                                        groupNumStorage[randomNumber2] += (" " + Names[i]);
+                                        groupNumStorageSize[randomNumber2]++;
+                                    }
+                                    else
+                                    {
+                                        groupNumStorage[randomNumber3] += (" " + Names[i]);
+                                        groupNumStorageSize[randomNumber3]++;
+                                    }
+                                }
+                                else
+                                {
+                                    i--;
+
+                                }
+
+                            }
+                        }
+
+                        //this.richTextBox1.AppendText(answer + " " + Names[i] + " " + "\n");
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
+            }
+            for (int displayIndex = 0; displayIndex < numOfGroups; displayIndex++) //this displays the groups in a pretty way
+            {
+                int saveDisplayIndex = displayIndex + 1;                                //groupnumstorage
+                tempStringDisplay = "\nteam: " + saveDisplayIndex.ToString() + groupNumStorage[displayIndex];
+
+                teamString[teamCount] = tempStringDisplay;
+                this.richTextBox1.AppendText(tempStringDisplay);
+                teamCount++;
+            }
+            //MessageBox.Show(String.Concat(groupNumStorageSize));
+            for (int clearig = 0; clearig < groupNumStorage.Length; clearig++)
+            {
+                groupNumStorage[clearig] = "";
+            }
+
+
+            textBox1.Focus();
+
+        }
+
+
         public void groupCheckArrayCreator(string[] array)
         {   //string[] = {//group1// "aaron abdul abe abel abraham", //group2//"adam adan adolfo adolph adrian"};
             string[] splitArray = { };
             //sameGroupCheck
-            string[] sameGroupCheck = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
+            outputarray = values;
 
             //string[] testGroup = { "aaron abe abe", "abel abdul abdul", "abel abdul adam", "abel abdul adam", "abel abdul adam", "abel abdul adam" };
-            for (int i = 0; i < testGroup.Length; i++)//goes to end of array
+            for (int i = 0; i < numOfGroupsCount; i++)//goes to end of array
             {
-                splitted = testGroup[i].Split(' ');//splits array
+                splitted = array[i].Split(' ');//splits array
                 for (int split = 0; split < splitted.Length; split++)
                 {
-                    for (int testIndex = 0; testIndex < sameGroupCheck.Length; testIndex++)
+                    for (int testIndex = 0; testIndex < count; testIndex++)
                     {
-                        if (splitted[split] == sameGroupCheck[testIndex])
+                        if (splitted[split] == values[testIndex])
                         {
                             // MessageBox.Show(splitted[split].ToString()+ "same name found");
-                            outputarray[testIndex] += " " + testGroup[i];
-                        }
+                            outputarray[testIndex] += " " + array[i];
+                        } //here make a clone of output array
                         else
                         {
                             //MessageBox.Show(splitted[split].ToString() + "same name not found");
@@ -374,22 +492,164 @@ namespace team_builder
                 }
 
             }
-            //duplicateRemover(outputarray); //this function call removes all the duplicates after the code above adds all names to each person they have been grouped with
-
+            //this function call removes all the duplicates after the code above adds all names to each person they have been grouped with
+            //for (int outputReset = 0; outputReset < outputarray.Length; outputReset++)//clears the array for the next index of main array
+            //{
+            //    outputarray[outputReset] = "";
+            //}
         }
-        public void duplicateRemover(string[] outputarray) // this removes all duplicate nnames
+
+        //pass this result to groupCheckArrayCreator // pass that to group checker then duplicate remover
+        public void groupCreatorTest(string[] Names)
+        {
+            double sizeOfGroups = Convert.ToDouble(this.textBox3.Text);
+            double product = Names.Length / sizeOfGroups;
+            double numOfGroup = Math.Ceiling(product);
+            //MessageBox.Show(numOfGroup.ToString());    
+            int numOfGroups = (int)numOfGroup;
+            numOfGroupsCount = numOfGroups;
+            //MessageBox.Show(numOfGroups.ToString());
+            int[] groupNumStorageSize = new int[400];
+            try
+            {
+                //int sizeOfGroups = testNames.Length %numOfGroups ;
+                this.richTextBox1.Clear();
+                Random random = new Random();//change to count
+                for (int i = 0; i <= Names.Length; i++)
+                {
+                    int randomNumber = random.Next(numOfGroups);
+                    int randomNumber2 = random.Next(numOfGroups);
+                    int randomNumber3 = random.Next(numOfGroups);
+                    int randomNumber4 = random.Next(numOfGroups);
+                    //makes it so it displays groups starting at 1 and not 0
+                    int answer = randomNumber + 1;
+
+
+                    if (Names[i] == null)
+                    {
+                        continue;
+                    }
+
+                    else
+                    {
+                        count++;
+                        // sets each index of randomNumbers to annswer so it can print off the groups when writing to file
+                        randomNumbers[i] = answer.ToString();
+
+                        for (int addingNames = 0; addingNames < Names.Length; addingNames++) //adds names to a group this is where code changed from displayig names to displaying groups.
+                        {
+
+                            if (randomNumber == addingNames)
+                            {
+                                if (groupNumStorageSize[randomNumber] < sizeOfGroups) // this line will make all groups even example 20 names 4 groups 5 names per group every group will get 5 names
+                                {                                                  // the if statements below will try to create as equal groups as they can 
+
+                                    if (groupNumStorageSize[randomNumber] < groupNumStorageSize[randomNumber2] || groupNumStorageSize[randomNumber] < groupNumStorageSize[randomNumber3])
+                                    {
+                                        groupNumStorage[randomNumber] += (" " + Names[i]);
+                                        groupNumStorageSize[randomNumber]++;
+                                    }
+                                    else if (groupNumStorageSize[randomNumber2] < groupNumStorageSize[randomNumber3] && groupNumStorageSize[randomNumber] == groupNumStorageSize[randomNumber3] || groupNumStorageSize[randomNumber2] == groupNumStorageSize[randomNumber3])
+                                    {
+
+                                        groupNumStorage[randomNumber2] += (" " + Names[i]);
+                                        groupNumStorageSize[randomNumber2]++;
+                                    }
+                                    else
+                                    {
+                                        groupNumStorage[randomNumber3] += (" " + Names[i]);
+                                        groupNumStorageSize[randomNumber3]++;
+                                    }
+                                }
+                                else
+                                {
+                                    i--;
+                                }
+
+                            }
+                        }
+
+                        this.richTextBox1.AppendText(answer + " " + Names[i] + " " + "\n");
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show(generalPurposeErrorMessage, WarningLabel);
+            }
+            for (int displayIndex = 0; displayIndex < numOfGroups; displayIndex++) //this displays the groups in a pretty way
+            {
+                int saveDisplayIndex = displayIndex + 1;                                //groupnumstorage
+                this.richTextBox2.AppendText("\nteam: " + saveDisplayIndex.ToString() + groupNumStorage[displayIndex]);
+            }
+            MessageBox.Show(String.Concat(groupNumStorageSize));
+            //for(int clearig = 0; clearig<groupNumStorage.Length;clearig++)
+            //{
+            // groupNumStorage[clearig] = "";
+            // }
+
+
+            textBox1.Focus();
+
+        }//pass this result to groupCheckArrayCreator // pass that to group checker then duplicate remover
+
+
+        public void groupCheckArrayCreatorTest(string[] array)
+        {   //string[] = {//group1// "aaron abdul abe abel abraham", //group2//"adam adan adolfo adolph adrian"};
+            string[] splitArray = { };
+            //sameGroupCheck
+            string[] sameGroupCheck = { "aaron", "abdul", "abe", "abel", "abraham", "adam", "adan", "adolfo", "adolph", "adrian" };
+
+            //string[] testGroup = { "aaron abe abe", "abel abdul abdul", "abel abdul adam", "abel abdul adam", "abel abdul adam", "abel abdul adam" };
+            for (int i = 0; i < numOfGroupsCount; i++)//goes to end of array
+            {
+                splitted = array[i].Split(' ');//splits array
+                for (int split = 0; split < splitted.Length; split++)
+                {
+                    for (int testIndex = 0; testIndex < sameGroupCheck.Length; testIndex++)
+                    {
+                        if (splitted[split] == sameGroupCheck[testIndex])
+                        {
+                            // MessageBox.Show(splitted[split].ToString()+ "same name found");
+                            outputarray[testIndex] += " " + array[i];
+                        } //here make a clone of output array
+                        else
+                        {
+                            //MessageBox.Show(splitted[split].ToString() + "same name not found");
+                        }
+                    }
+                }
+
+
+                //expect error here
+
+                for (int reset = 0; reset < splitted.Length; reset++)//clears the array for the next index of main array
+                {
+                    splitted[reset] = "";
+                }
+
+            }
+            duplicateRemoverTest(outputarray); //this function call removes all the duplicates after the code above adds all names to each person they have been grouped with
+                                               //for (int outputReset = 0; outputReset < outputarray.Length; outputReset++)//clears the array for the next index of main array
+                                               //{
+                                               //    outputarray[outputReset] = "";
+                                               //}
+        }//this makes the array so it can be checked for duplicates it works but not impletmeted // pass to groupChecker
+
+        public void duplicateRemoverTest(string[] outputArray) // this removes all duplicate nnames
         {
             string[] a = { };
             string[] a2 = new string[400];
             //string[] array1 = { "aaron abe abe", "abel abdul abdul", "abel abdul adam" };
-            string[] arr = { };
-            for (int str = 0; str < outputarray.Length; str++)
+
+            for (int str = 0; str < testNames.Length; str++)
             {
 
-                arr = outputarray[str].Split(' '); //splits array
+                arr = outputArray[str].Split(' '); //splits array ////
+
                 a = arr.Distinct().ToArray();//removes all duplicates in the array and saves to another array
 
-                MessageBox.Show(String.Concat(a));
+                //MessageBox.Show(String.Concat(a));
 
                 a2[str] = string.Join(" ", a); //joins array together
 
@@ -401,27 +661,48 @@ namespace team_builder
 
             for (int output = 0; output < a2.Length; output++)
             {
+                if (a2[output] != null)
+                {
+                    this.richTextBox2.AppendText(a2[output] + "\n");
+
+                }
                 //this.richTextBox2.AppendText(outputarray[output]+ "\n" );
                 //this.richTextBox2.AppendText(splitArray[output] + "\n");
-                this.richTextBox2.AppendText(a2[output] + "\n"); // outputs array with no duplicates
+                // outputs array with no duplicates
             }
 
-        }
-        public void groupChecker(string[] testGroup)   // this is the code for checking for duplicates in groups takes in an array and will return to a global array the array so it can be processed ikn the next click
+        } //after this display the array. 
+
+        public void groupChecker(string[] temp, string[] original)   // this is the code for checking for duplicates in groups takes in an array and will return to a global array the array so it can be processed ikn the next click
         {
-            for (int i = 0; i < testGroup.Length; i++)//goes to end of array
+            for (int i = 0; i < temp.Length; i++)//goes to end of array
             {
-                splitted = testGroup[i].Split(' ');//splits array
+                splitted = temp[i].Split(' ');//splits array
+                string tempTest = splitted[0];
+                splitted[0] = "";
+                //MessageBox.Show(tempTest);
+                //MessageBox.Show(splitted[0]);
                 if (splitted.Distinct().Count() != splitted.Count())//tests if any values of the first index of main array are duplicates in each index of splitted array
                 {
-                    MessageBox.Show("List " + i.ToString() + " contains duplicate values.");
-                }
-                else
-                {
-                    MessageBox.Show("list " + i.ToString() + " is good");
+
+                    // MessageBox.Show(String.Concat(temp));
+                    //temp = original;
+
+                    splitted[0] = tempTest;
+                    // MessageBox.Show(splitted[0]);
+                    tempTest = "";
+                    //MessageBox.Show(tempTest);
+                    //MessageBox.Show(String.Concat(splitted));
+                    //take the temp array copy to original pass original to duplicate remover then display it
+
                 }
 
-                MessageBox.Show(String.Concat(splitted));
+                else
+                {
+                    //call create group function again
+                }
+
+
 
                 for (int reset = 0; reset < splitted.Length; reset++)//clears the array for the next index of main array
                 {
