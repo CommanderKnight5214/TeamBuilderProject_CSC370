@@ -1,0 +1,50 @@
+C:\Users\sprei\source\repos\team builder\team builder\bin\Debug\team builder.exe.config
+C:\Users\sprei\source\repos\team builder\team builder\bin\Debug\team builder.exe
+C:\Users\sprei\source\repos\team builder\team builder\bin\Debug\team builder.pdb
+C:\Users\sprei\source\repos\team builder\team builder\obj\Debug\team builder.csprojAssemblyReference.cache
+C:\Users\sprei\source\repos\team builder\team builder\obj\Debug\team_builder.Form1.resources
+C:\Users\sprei\source\repos\team builder\team builder\obj\Debug\team_builder.Properties.Resources.resources
+C:\Users\sprei\source\repos\team builder\team builder\obj\Debug\team builder.csproj.GenerateResource.cache
+C:\Users\sprei\source\repos\team builder\team builder\obj\Debug\team builder.csproj.CoreCompileInputs.cache
+C:\Users\sprei\source\repos\team builder\team builder\obj\Debug\team builder.exe
+C:\Users\sprei\source\repos\team builder\team builder\obj\Debug\team builder.pdb
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\bin\Debug\team builder.exe.config
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\bin\Debug\team builder.exe
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\bin\Debug\team builder.pdb
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\obj\Debug\team builder.csprojAssemblyReference.cache
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\obj\Debug\team_builder.Form1.resources
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\obj\Debug\team_builder.Properties.Resources.resources
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\obj\Debug\team builder.csproj.GenerateResource.cache
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\obj\Debug\team builder.csproj.CoreCompileInputs.cache
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\obj\Debug\team builder.exe
+D:\2020-2021 School Year 2nd Semester\Software Engineering\Team Project\Program Files\team builder\team builder\obj\Debug\team builder.pdb
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\obj\Debug\team builder.csprojAssemblyReference.cache
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\obj\Debug\team_builder.Form1.resources
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\obj\Debug\team_builder.Properties.Resources.resources
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\obj\Debug\team builder.csproj.GenerateResource.cache
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\obj\Debug\team builder.csproj.CoreCompileInputs.cache
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\obj\Debug\team builder.exe
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\obj\Debug\team builder.pdb
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\bin\Debug\team builder.exe.config
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\bin\Debug\team builder.exe
+C:\Users\Domin\Downloads\TeamBuilderProject_CSC370-main\team builder\team builder\bin\Debug\team builder.pdb
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\bin\Debug\team builder.exe.config
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\bin\Debug\team builder.exe
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\bin\Debug\team builder.pdb
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team_builder.Form1.resources
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team_builder.Properties.Resources.resources
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.csproj.GenerateResource.cache
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.csproj.CoreCompileInputs.cache
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.exe
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.pdb
+D:\GitHub Repository\TeamBuilderProject_CSC370\team builder\team builder\obj\Debug\team builder.csprojAssemblyReference.cache
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\bin\Debug\team builder.exe.config
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\bin\Debug\team builder.exe
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\bin\Debug\team builder.pdb
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\obj\Debug\team builder.csprojAssemblyReference.cache
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\obj\Debug\team_builder.Form1.resources
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\obj\Debug\team_builder.Properties.Resources.resources
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\obj\Debug\team builder.csproj.GenerateResource.cache
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\obj\Debug\team builder.csproj.CoreCompileInputs.cache
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\obj\Debug\team builder.exe
+D:\GitHub Repository\TeamBuilderProject_CSC370\Program Files\team builder\team builder\obj\Debug\team builder.pdb
